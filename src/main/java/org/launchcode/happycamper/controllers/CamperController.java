@@ -14,7 +14,7 @@ public class CamperController {
 
         model.addAttribute("title", "HappyCamper");
         return "camper/index";
-        //added some github stuff
+        
     }
 
 }
