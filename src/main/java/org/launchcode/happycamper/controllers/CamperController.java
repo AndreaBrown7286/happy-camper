@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value = "camper")
+@RequestMapping("camper")
 public class CamperController {
 
     @RequestMapping(value = "")
@@ -14,7 +14,8 @@ public class CamperController {
 
         model.addAttribute("title", "HappyCamper");
         return "camper/index";
-        
     }
+
+
 
 }
