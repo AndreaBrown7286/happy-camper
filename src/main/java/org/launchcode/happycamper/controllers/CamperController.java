@@ -30,4 +30,5 @@ public class CamperController {
         return "camper/blog";
     }
 
+    //ToDo: process blog form-conect with database
 }

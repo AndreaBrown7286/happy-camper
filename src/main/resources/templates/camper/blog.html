@@ -19,9 +19,9 @@
     </div>
 
     <div class="form-group">
-        <label th:for="*{boby}">Write your story:</label>
-        <input class="form-control" th:field="*{boby}"/>
-        <span th:errors="*{boby}" class="error"></span>
+        <label th:for="*{body}">Write your story:</label>
+        <textarea class="form-control" rows="5" th:field="*{body}"></textarea>
+        <span th:errors="*{body}" class="error"></span>
     </div>
 
     <div class="form-group">

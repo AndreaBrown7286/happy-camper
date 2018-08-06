@@ -31,7 +31,6 @@ public class UserController {
     }
 
 
-        //ToDo: throws a null exception error line 45
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processadduser(Model model, @ModelAttribute @Valid User user, Errors errors) {
         List<User> sameName = userDao.findByUsername(user.getUsername());
@@ -51,4 +50,7 @@ public class UserController {
             return "user/add";
         }
     }
+
+    //ToDo: build login controllers
+
 }

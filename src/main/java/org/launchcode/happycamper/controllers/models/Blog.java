@@ -20,18 +20,18 @@ public class Blog {
     private String title;
 
     @NotNull
-    private String boby;
+    private String body;
 
-    // ToDo: connect this with user id
+    // ToDo: connect this with user id using OneToMany ManyToOne
     @NotNull
     private String author;
 
     @NotNull
     private Timestamp createdOn;
 
-    public Blog(String title, String boby, String author, Timestamp createdOn) {
+    public Blog(String title, String body, String author, Timestamp createdOn) {
         this.title = title;
-        this.boby = boby;
+        this.body = body;
         this.author = author;
         this.createdOn = createdOn;
     }
@@ -51,12 +51,12 @@ public class Blog {
         this.title = title;
     }
 
-    public String getBoby() {
-        return boby;
+    public String getBody() {
+        return body;
     }
 
-    public void setBoby(String boby) {
-        this.boby = boby;
+    public void setBody(String body) {
+        this.body = body;
     }
 
     public String getAuthor() {
