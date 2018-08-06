@@ -1,6 +1,8 @@
 package org.launchcode.happycamper.controllers;
 
-import org.launchcode.happycamper.User;
+import org.launchcode.happycamper.controllers.models.User;
+import org.launchcode.happycamper.controllers.models.data.UserDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -8,30 +10,45 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.validation.Valid;
+import java.util.List;
+
 
 @Controller
 @RequestMapping(value = "user")
 public class UserController {
 
-    @RequestMapping(value = "add", method = RequestMethod.GET)
+    @Autowired
+    private UserDao userDao;
+
+    @RequestMapping(value = "add")
     public String adduser(Model model) {
+
         model.addAttribute("title", "HappyCamper User SignUp");
-        model.addAttribute(new User());
+        User user = new User();
+        model.addAttribute("user", user);
         return "user/add";
     }
 
+
+        //ToDo: throws a null exception error line 45
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processadduser(Model model, @ModelAttribute User user, Errors errors) {
-        if (errors.hasErrors()){
+    public String processadduser(Model model, @ModelAttribute @Valid User user, Errors errors) {
+        List<User> sameName = userDao.findByUsername(user.getUsername());
+        if (!errors.hasErrors() && sameName.isEmpty()) {
+            model.addAttribute("user", user);
+            userDao.save(user);
+            return "user/index";
+        } else {
+            if(errors.hasErrors()){
+            model.addAttribute("user", user);
             model.addAttribute("title", "HappyCamper User SignUp");
-            model.addAttribute("username", user.getUsername());
-            model.addAttribute("email", user.getEmail());
-            model.addAttribute("password", user.getPassword());
-            model.addAttribute("message", "Passwords do not match!");
             return "user/add";
-        }else{
-        model.addAttribute("user", user);
-        return "user/index";
+            }
+            if (!sameName.isEmpty()){
+                model.addAttribute("message", "Username is taken, Please try again.");
+            }
+            return "user/add";
         }
     }
 }

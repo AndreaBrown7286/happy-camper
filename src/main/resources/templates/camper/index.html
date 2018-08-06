@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org/">
-<head></head>
-<body>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+<head th:replace="fragments :: head"></head>
+
 <nav>
     <a href="/user/add">Signup</a> | <a href="/user/login">Login</a> | <a href="/search">Search</a>
 </nav>
-<div class="container body-content">
+
+<body class="container">
     <h1 th:text="${title}"></h1>
-
-
-
-</div>
-
 </body>
+
 </html>

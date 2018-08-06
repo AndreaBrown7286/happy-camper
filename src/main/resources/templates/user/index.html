@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org/">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+<head th:replace="fragments :: head"></head>
 
 <nav>
     <a href="/camper">Home Page</a>
 </nav>
+
 <body class="container">
-<h1 th:text=" 'Hello, ' + ${user.username} +'. Welcome to HappyCamper!'"></h1>
+    <h1 th:text=" 'Hello, ' + ${user.username} +'. Welcome to HappyCamper!'"></h1>
 </body>
 
 

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+<head th:replace="fragments :: head"></head>
+
+<nav>
+    <a href="/camper">Home Page</a>
+</nav>
+
+<body class="container">
+<h1 th:text="${title}">Default Title</h1>
+
+<form method="post" th:object="${blog}">
+    <div class="form-group">
+        <label th:for="*{title}">Title:</label>
+        <input class="form-control" th:field="*{title}"/>
+        <span th:errors="*{title}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="*{boby}">Write your story:</label>
+        <input class="form-control" th:field="*{boby}"/>
+        <span th:errors="*{boby}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="*{author}">Author:</label>
+        <input class="form-control" th:field="*{author}"/>
+        <span th:errors="*{author}" class="error"></span>
+    </div>
+
+    <input type="submit" value="Submit" />
+</form>
+
+<span class="error" th:text="${message}"></span>
+
+</body>
+
+</html>
