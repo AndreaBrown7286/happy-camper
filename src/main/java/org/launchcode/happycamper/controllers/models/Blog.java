@@ -1,9 +1,7 @@
 package org.launchcode.happycamper.controllers.models;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.sql.Timestamp;
@@ -23,17 +21,16 @@ public class Blog {
     private String body;
 
     // ToDo: connect this with user id using OneToMany ManyToOne
-    @NotNull
     private String author;
 
-    @NotNull
-    private Timestamp createdOn;
+//    @NotNull
+//    private Timestamp createdOn;
 
-    public Blog(String title, String body, String author, Timestamp createdOn) {
+    public Blog(String title, String body, String author) {
         this.title = title;
         this.body = body;
         this.author = author;
-        this.createdOn = createdOn;
+        //this.createdOn = createdOn;
     }
     public Blog(){
 
@@ -67,11 +64,11 @@ public class Blog {
         this.author = author;
     }
 
-    public Timestamp getCreatedOn() {
-        return createdOn;
-    }
-
-    public void setCreatedOn(Timestamp createdOn) {
-        this.createdOn = createdOn;
-    }
+//    public Timestamp getCreatedOn() {
+//        return createdOn;
+//    }
+//
+//    public void setCreatedOn(Timestamp createdOn) {
+//        this.createdOn = createdOn;
+//    }
 }

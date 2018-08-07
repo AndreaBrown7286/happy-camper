@@ -4,12 +4,31 @@
 
 <head th:replace="fragments :: head"></head>
 
-<nav>
-    <a href="/user/add">Signup</a> | <a href="/user/login">Login</a> | <a href="/search">Search</a>
-</nav>
+    <nav>
+        <a href="/user/add">Signup</a> | <a href="/user/login">Login</a> | <a href="/search">Search</a>
+    </nav>
 
-<body class="container">
-    <h1 th:text="${title}"></h1>
-</body>
+    <body class="container">
+        <h1 th:text="${title}"></h1>
+
+        <hr/>
+        <h3 th:unless="${blogs} and ${blogs.size()}">Bummer! No stories yet :(</h3>
+
+
+        <table class="table">
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <!--<th>Date</th>-->
+            </tr>
+            <tr th:each="blog : ${blogs}">
+                <td th:text="${blog.title}"></td>
+                <td th:text="${blog.author}"></td>
+                <!--<td th:text="${blog.createdon}"></td>-->
+            </tr>
+        </table>
+
+        <hr/>
+    </body>
 
 </html>

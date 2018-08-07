@@ -7,6 +7,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 //ToDo: BCrypt-encript users
 
@@ -15,7 +17,6 @@ public class User {
 
     @Id
     @GeneratedValue
-    @ManyToMany
     private int id;
 
     @NotNull
@@ -33,28 +34,14 @@ public class User {
     @NotNull(message = "Passwords must match")
     private String verify_password;
 
-    @Null
-    private int active;
 
-    @ManyToMany(mappedBy = "UserRole")
-    private HashSet<Role> roles;
-
-    public User(String username, String email, String password, int active) {
+    public User(String username, String email, String password) {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.active = active;
     }
 
     public User() {
-    }
-
-    public HashSet<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(HashSet<Role> roles) {
-        this.roles = roles;
     }
 
     public int getId() {
@@ -93,14 +80,6 @@ public class User {
     }
     public String getVerify_password() {
         return verify_password;
-    }
-
-    public int getActive() {
-        return active;
-    }
-
-    public void setActive(int active) {
-        this.active = active;
     }
 
     private void checkPassword(){

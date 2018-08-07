@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"
+      xmlns="http://www.w3.org/1999/xhtml">
 
 <head th:replace="fragments :: head"></head>
 
 <nav>
-    <a href="/camper">Home Page</a>
+    <a th:href="/camper">Home Page</a> | <a th:href="/logout">Logout</a>
 </nav>
 
 <body class="container">
     <h1 th:text=" 'Hello, ' + ${user.username} +'. Welcome to HappyCamper!'"></h1>
+    <nav>
+        <a th:href="camper/add">Create new Post</a>
+    </nav>
 </body>
 
-<nav>
-    <a href="/user/userPage">My Page</a> | <a href="camper/add">Create new Post</a>
-</nav>
+
 
 </html>

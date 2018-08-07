@@ -40,9 +40,9 @@ public class UserController {
             return "user/index";
         } else {
             if(errors.hasErrors()){
-            model.addAttribute("user", user);
-            model.addAttribute("title", "HappyCamper User SignUp");
-            return "user/add";
+                model.addAttribute("user", user);
+                model.addAttribute("title", "HappyCamper User SignUp");
+                return "user/add";
             }
             if (!sameName.isEmpty()){
                 model.addAttribute("message", "Username is taken, Please try again.");
