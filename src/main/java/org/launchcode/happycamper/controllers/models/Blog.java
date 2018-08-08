@@ -4,7 +4,6 @@ package org.launchcode.happycamper.controllers.models;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.sql.Timestamp;
 
 @Entity
 public class Blog {
@@ -23,14 +22,14 @@ public class Blog {
     // ToDo: connect this with user id using OneToMany ManyToOne
     private String author;
 
-//    @NotNull
-//    private Timestamp createdOn;
+    @NotNull
+    private int createdOn;
 
     public Blog(String title, String body, String author) {
         this.title = title;
         this.body = body;
         this.author = author;
-        //this.createdOn = createdOn;
+//        this.createdOn = createdOn;
     }
     public Blog(){
 
@@ -64,11 +63,11 @@ public class Blog {
         this.author = author;
     }
 
-//    public Timestamp getCreatedOn() {
+//    public int getCreatedOn() {
 //        return createdOn;
 //    }
 //
-//    public void setCreatedOn(Timestamp createdOn) {
+//    public void setCreatedOn(int createdOn) {
 //        this.createdOn = createdOn;
 //    }
 }

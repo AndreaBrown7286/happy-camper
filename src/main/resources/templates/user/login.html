@@ -5,14 +5,14 @@
 
 <head th:replace="fragments :: head"></head>
 
-<h1 th:text="${title}">Default Title</h1>
+<h1 class="center-block" th:text="${title}">Default Title</h1>
 
 <body>
     <div  class="container">
         <!--<div class="alert alert-danger" role="alert" th:if="${param.error}">-->
             <!--This email or password is incorrect.-->
         <!--</div>-->
-            <form method="post" style="max-width:600px;" th:object="${user}">
+            <form method="post" th:object="${user}">
 
                 <div class="form-group">
                     <label th:for="*{username}">Username</label>
@@ -33,7 +33,7 @@
                 </div>
 
                 <input type="submit" value="Login" />
-                <div class="margin-top20 text-center">Don't have an account? <a th:href="user/add">Create an account</a></div>
+                <!--<div><p>Don't have an account? <a th:href="user/add">Create an account</a></p></div>-->
             </form>
         </div>
 <span class="error" th:text="${message}"></span>

@@ -21,8 +21,18 @@ public class UserController {
     @Autowired
     private UserDao userDao;
 
+    //ToDo: build login controllers
+    @RequestMapping(value = "login")
+    public String displayloginform(Model model) {
+
+        model.addAttribute("title", "Login to HappyCamper");
+        User user = new User();
+        model.addAttribute("user", user);
+        return "user/login";
+    }
+
     @RequestMapping(value = "add")
-    public String adduser(Model model) {
+    public String displayadduserform(Model model) {
 
         model.addAttribute("title", "HappyCamper User SignUp");
         User user = new User();
@@ -50,7 +60,4 @@ public class UserController {
             return "user/add";
         }
     }
-
-    //ToDo: build login controllers
-
 }

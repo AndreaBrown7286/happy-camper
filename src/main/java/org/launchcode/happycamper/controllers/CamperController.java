@@ -24,7 +24,7 @@ public class CamperController {
     public String index(Model model) {
 
         model.addAttribute("blogs", blogDao.findAll());
-        model.addAttribute("title", "HappyCamper");
+        model.addAttribute("title", "Welcome to HappyCamper!");
         return "camper/index";
     }
 
@@ -42,6 +42,8 @@ public class CamperController {
     @RequestMapping(value = "blog", method = RequestMethod.POST)
     public String processblog(Model model, @ModelAttribute @Valid Blog blog, Errors errors) {
         if (!errors.hasErrors()) {
+            model.addAttribute("blogs", blogDao.findAll());
+            model.addAttribute("title", "HappyCamper Posts");
             model.addAttribute("blog", blog);
             blogDao.save(blog);
             return "camper/index";
