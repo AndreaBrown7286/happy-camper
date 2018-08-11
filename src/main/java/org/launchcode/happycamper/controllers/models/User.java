@@ -27,18 +27,18 @@ public class User {
     @Email
     private String email;
 
-    @NotNull(message = "Please enter a password")
+    @NotNull
     @Size(min = 5, max = 15)
     private String password;
 
-    @NotNull(message = "Passwords must match")
-    private String verify_password;
+    private List<UserRole> roles;
 
-
-    public User(String username, String email, String password) {
+    public User(int id, String username, String email, String password, List<UserRole> roles) {
+        this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
+        this.roles = roles;
     }
 
     public User() {
@@ -46,6 +46,10 @@ public class User {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -64,29 +68,19 @@ public class User {
         this.email = email;
     }
 
-
-    public void setPassword(String password) {
-        this.password = password;
-        checkPassword();
-    }
-
-    public void setVerify_password(String verify_password) {
-        this.verify_password = verify_password;
-        checkPassword();
-    }
-
     public String getPassword() {
         return password;
     }
-    public String getVerify_password() {
-        return verify_password;
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    private void checkPassword(){
-        if(this.password == null || this.verify_password == null) {
-            return;
-        }else if (!this.password.equals(verify_password)){
-                this.verify_password = null;
-            }
-        }
+    public List<UserRole> getRoles() {
+        return roles;
     }
+
+    public void setRoles(List<UserRole> roles) {
+        this.roles = roles;
+    }
+}
