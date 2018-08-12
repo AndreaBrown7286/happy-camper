@@ -1,13 +1,12 @@
 package org.launchcode.happycamper.controllers.models;
 
+import javax.persistence.Entity;
 import javax.management.relation.Role;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 //ToDo: BCrypt-encript users
@@ -31,14 +30,20 @@ public class User {
     @Size(min = 5, max = 15)
     private String password;
 
-    private List<UserRole> roles;
+    @NotNull
+    @Size(min = 5, max = 15)
+    private String verify_password;
 
-    public User(int id, String username, String email, String password, List<UserRole> roles) {
+    private int active;
+
+    @ManyToMany(mappedBy = "users")
+    private Set<Role> roles;
+
+    public User(int id, String username, String email, String password) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.roles = roles;
     }
 
     public User() {
@@ -76,11 +81,29 @@ public class User {
         this.password = password;
     }
 
-    public List<UserRole> getRoles() {
-        return roles;
+    public String getVerify_password() {
+        return verify_password;
     }
 
-    public void setRoles(List<UserRole> roles) {
+    public void setVerify_password(String verify_password) {
+        this.verify_password = verify_password;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
+
+    public Set<Role> getRoles(){
+        return roles;
+    }
+    public void setRoles(Set<Role> roles){
         this.roles = roles;
+    }
+
+    public void getRoles(HashSet<org.springframework.context.annotation.Role> roles) {
     }
 }

@@ -3,7 +3,8 @@ package org.launchcode.happycamper.controllers.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import javax.persistence.ManyToMany;
+import java.util.List;
 
 @Entity
 public class UserRole {
@@ -12,13 +13,10 @@ public class UserRole {
     @GeneratedValue
     private int id;
 
-    @NotNull
     private String roleName;
 
-    public UserRole(int id, @NotNull String roleName) {
-        this.id = id;
-        this.roleName = roleName;
-    }
+    @ManyToMany
+    private List<User> users;
 
     public UserRole() { }
 
@@ -36,5 +34,9 @@ public class UserRole {
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;
+    }
+
+    public List<User> getUsers() {
+        return users;
     }
 }
