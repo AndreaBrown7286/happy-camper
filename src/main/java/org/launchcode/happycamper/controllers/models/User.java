@@ -1,15 +1,11 @@
 package org.launchcode.happycamper.controllers.models;
 
 import javax.persistence.Entity;
-import javax.management.relation.Role;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.HashSet;
-import java.util.Set;
-
-//ToDo: BCrypt-encript users
 
 @Entity
 public class User {
@@ -33,11 +29,6 @@ public class User {
     @NotNull
     @Size(min = 5, max = 15)
     private String verify_password;
-
-    private int active;
-
-    @ManyToMany(mappedBy = "users")
-    private Set<Role> roles;
 
     public User(int id, String username, String email, String password) {
         this.id = id;
@@ -87,23 +78,5 @@ public class User {
 
     public void setVerify_password(String verify_password) {
         this.verify_password = verify_password;
-    }
-
-    public int getActive() {
-        return active;
-    }
-
-    public void setActive(int active) {
-        this.active = active;
-    }
-
-    public Set<Role> getRoles(){
-        return roles;
-    }
-    public void setRoles(Set<Role> roles){
-        this.roles = roles;
-    }
-
-    public void getRoles(HashSet<org.springframework.context.annotation.Role> roles) {
     }
 }

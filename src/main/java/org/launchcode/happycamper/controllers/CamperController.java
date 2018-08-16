@@ -1,7 +1,6 @@
 package org.launchcode.happycamper.controllers;
 
 import org.launchcode.happycamper.controllers.models.Blog;
-import org.launchcode.happycamper.controllers.models.User;
 import org.launchcode.happycamper.controllers.models.data.BlogDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

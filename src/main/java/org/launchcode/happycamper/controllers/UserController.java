@@ -1,12 +1,11 @@
 package org.launchcode.happycamper.controllers;
 
-import org.launchcode.happycamper.configuration.UserService;
+//import org.launchcode.happycamper.configuration.UserService;
 import org.launchcode.happycamper.controllers.models.User;
 import org.launchcode.happycamper.controllers.models.data.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,11 +21,11 @@ public class UserController {
 
     @Autowired
     private UserDao userDao;
+//
+//    @Autowired
+//    private UserService userService;
 
-    @Autowired
-    private UserService userService;
 
-    //ToDo: build login controllers
     @RequestMapping(value = "login")
     public String displayloginform(Model model) {
         model.addAttribute("title", "Login to HappyCamper");
@@ -45,20 +44,21 @@ public class UserController {
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processadduser(Model model, @ModelAttribute @Valid User user, Errors errors) {
-
-        User userExists = userService.findUserByEmail(user.getEmail());
-        if (userExists != null){
-            model.addAttribute("message", "Username is taken, Please try again.");
-        }
-        if(errors.hasErrors()){
+        List<User> sameName = userDao.findByUsername(user.getUsername());
+        if (!errors.hasErrors() && sameName.isEmpty()) {
             model.addAttribute("user", user);
-            model.addAttribute("title", "HappyCamper User SignUp");
-            return "user/add";
-        }else{
-            userService.saveUser(user);
-            model.addAttribute("successMessage", "User has been registered successfully");
-            model.addAttribute("user", new User());
+            userDao.save(user);
             return "user/index";
+        } else {
+            if(errors.hasErrors()){
+                model.addAttribute("user", user);
+                model.addAttribute("title", "HappyCamper User SignUp");
+                return "user/add";
+            }
+            if (!sameName.isEmpty()){
+                model.addAttribute("message", "Username is taken, Please try again.");
+            }
+            return "user/add";
         }
     }
 }
