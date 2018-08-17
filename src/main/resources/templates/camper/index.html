@@ -3,32 +3,71 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 
 <head th:replace="fragments :: head"></head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-green.css">
 
-    <nav>
-        <a href="/user/add">Signup</a> | <a href="/user/login">Login</a> | <a href="/search">Search</a> | <a href="/camper">Home</a>
-        <div><a href="/camper/blog">Write a new Story!</a></div>
-    </nav>
+<div class="w3-container">
+    <div class="w3-bar w3-border w3-light-grey">
+        <a href="/user/add" class="w3-bar-item w3-button">Signup</a>
+        <a href="/user/login" class="w3-bar-item w3-button w3-hover-green">Login</a>
+        <a href="/camper" class="w3-bar-item w3-button w3-hover-blue">Home</a>
+        <a href="/camper/blog" class="w3-bar-item w3-button w3-hover-teal">Write a new Story!</a>
+        <input type="text" class="w3-bar-item w3-input w3-white w3-mobile w3-right" placeholder="Search..">
+        <button class="w3-bar-item w3-button w3-green w3-mobile w3-right">Go</button>
+    </div>
+</div>
 
-    <body class="container">
-    <div class="center-block"><h1 th:text="${title}"></h1></div>
+    <body>
 
+    <div class="w3-display-container w3-animate-opacity">
+        <img src="https://tpwd.texas.gov/state-parks/garner/gallery/GARNER-SP_HDR_3941.jpg" alt="Mountain" style="width:100%;min-height:200px;max-height:400px;">
+        <div class="w3-display-middle w3-text-white w3-jumbo">HappyCamper</div>
+        <div class="w3-container w3-display-bottomright w3-text-white w3-large">
+            <p>Brought to you by Andrea Brown</p>
+        </div>
+    </div>
+
+    <div class="w3-container w3-margin">
+        <h2>Welcome to HappyCamper</h2>
+        <p>HappyCamper is a place for campers to share there stories with their fellow camping community.
+            Where you can share what you love about your favorite campgrounds and that perfect site number,
+            share your photos, and even give a star rating. If you looking for your next adventure try searching
+            a campgrounds and see what your fellow campers thought, what ratings they gave and what is the best site
+            to book.
+                                                                                         Happy Camping!</p>
+    </div>
+    <hr/>
 
         <p th:unless="${blogs} and ${blogs.size()}">Bummer! No stories yet :(</p>
 
+    <table class="w3-table-all w3-margin">
+        <thead>
+        <tr class="w3-teal">
+            <th>Title</th>
+            <th>Author</th>
+        </tr>
+        </thead>
+        <tr th:each="blog : ${blogs}">
+            <td th:text="${blog.title}"></td>
+            <td th:text="${blog.author}"></td>
+        </tr>
+    </table>
 
-        <table class="table">
-            <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <!--<th>Date</th>-->
-            </tr>
 
-            <tr th:each="blog : ${blogs}">
-                <td th:text="${blog.title}"></td>
-                <td th:text="${blog.author}"></td>
-                <!--<td th:text="${blog.createdon}"></td>-->
-            </tr>
-        </table>
+        <!--<table class="table">-->
+            <!--<tr>-->
+                <!--<th>Title</th>-->
+                <!--<th>Author</th>-->
+                <!--&lt;!&ndash;<th>Date</th>&ndash;&gt;-->
+            <!--</tr>-->
+
+            <!--<tr th:each="blog : ${blogs}">-->
+                <!--<td th:text="${blog.title}"></td>-->
+                <!--<td th:text="${blog.author}"></td>-->
+                <!--&lt;!&ndash;<td th:text="${blog.createdon}"></td>&ndash;&gt;-->
+            <!--</tr>-->
+        <!--</table>-->
 
         <hr/>
     </body>
