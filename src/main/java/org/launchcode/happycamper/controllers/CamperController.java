@@ -2,6 +2,7 @@ package org.launchcode.happycamper.controllers;
 
 import org.launchcode.happycamper.controllers.models.Blog;
 import org.launchcode.happycamper.controllers.models.data.BlogDao;
+import org.launchcode.happycamper.controllers.models.data.SearchForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,8 +37,6 @@ public class CamperController {
         return "camper/blog";
     }
 
-    //ToDo: index.html table isnt showing blogs on index page
-
     @RequestMapping(value = "blog", method = RequestMethod.POST)
     public String processblog(Model model, @ModelAttribute @Valid Blog blog, Errors errors) {
         if (!errors.hasErrors()) {
@@ -54,5 +53,17 @@ public class CamperController {
             return "camper/blog";
         }
     }
+
+    @RequestMapping(value = "search")
+    public String search(Model model) {
+        model.addAttribute(new SearchForm());
+        return "camper/search";
+    }
+//
+//    @RequestMapping(value = "")
+//    public String searchresults(Model model, @ModelAttribute SearchForm searchForm){
+//
+//        return "camper/singleblog";
+//    }
 
 }

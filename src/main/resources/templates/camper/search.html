@@ -20,25 +20,15 @@
 
 <div class="w3-container body-content">
 
-    <table class="blog-display" th:object="${blog}">
-        <tr>
-            <th>Title</th>
-            <td th:text="*{title}"></td>
-        </tr>
-        <tr>
-            <th>Body</th>
-            <td th:text="*{body}"></td>
-        </tr>
-        <tr>
-            <th>author</th>
-            <td th:text="*{author}"></td>
-        </tr>
-        <tr>
-            <th>createdOn</th>
-            <td th:text="*{createdOn}"></td>
-        </tr>
-    </table>
-</div>
+    <form method="post" th:object="${searchForm}">
+    <div class="form-group">
+        <label th:for="*{keyword}">Keyword</label>
+        <input class="form-control" th:field="*{keyword}" />
+    </div>
 
+    <input type="submit" value="Search" />
+    </form>
+
+</div>
 </body>
 </html>
