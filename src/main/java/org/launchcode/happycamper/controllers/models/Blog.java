@@ -1,9 +1,10 @@
 package org.launchcode.happycamper.controllers.models;
 
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Date;
+
 
 @Entity
 public class Blog {
@@ -19,17 +20,16 @@ public class Blog {
     @NotNull
     private String body;
 
-    // ToDo: connect this with user id using OneToMany ManyToOne
     private String author;
 
     @NotNull
-    private int createdOn;
+    private Date createdOn;
 
-    public Blog(String title, String body, String author) {
+    public Blog(String title, String body, String author, Date createdOn) {
         this.title = title;
         this.body = body;
         this.author = author;
-//        this.createdOn = createdOn;
+        this.createdOn = createdOn;
     }
     public Blog(){
 
@@ -47,11 +47,11 @@ public class Blog {
         this.title = title;
     }
 
-    public String getBody() {
+    public String  getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(String  body) {
         this.body = body;
     }
 
@@ -63,11 +63,11 @@ public class Blog {
         this.author = author;
     }
 
-//    public int getCreatedOn() {
-//        return createdOn;
-//    }
-//
-//    public void setCreatedOn(int createdOn) {
-//        this.createdOn = createdOn;
-//    }
+    public Date getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(Date createdOn) {
+        this.createdOn = createdOn;
+    }
 }

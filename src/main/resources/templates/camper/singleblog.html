@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+<head th:replace="fragments :: head"></head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-green.css">
+
+
+<div class="w3-container">
+    <div class="w3-bar w3-border w3-light-grey">
+        <a href="/camper" class="w3-bar-item w3-button">Home Page</a>
+        <a href="/camper/blog" class="w3-bar-item w3-button w3-hover-teal">Write a new Story!</a>
+        <input type="text" class="w3-bar-item w3-input w3-white w3-mobile w3-right" placeholder="Search..">
+        <button class="w3-bar-item w3-button w3-green w3-mobile w3-right">Go</button>
+    </div>
+</div>
+
+<body class="container w3-display-container w3-dark-gray" style="height:300px;">
+
+<div class="w3-container body-content">
+
+    <table class="blog-display" th:object="${blog}">
+        <tr>
+            <th>Title</th>
+            <td th:text="*{Title}"></td>
+        </tr>
+        <tr>
+            <th>Body</th>
+            <td th:text="*{Body}"></td>
+        </tr>
+        <tr>
+            <th>author</th>
+            <td th:text="*{author}"></td>
+        </tr>
+        <tr>
+            <th>createdOn</th>
+            <td th:text="*{createdOn}"></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

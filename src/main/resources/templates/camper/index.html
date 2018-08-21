@@ -9,8 +9,6 @@
 
 <div class="w3-container">
     <div class="w3-bar w3-border w3-light-grey">
-        <a href="/user/add" class="w3-bar-item w3-button">Signup</a>
-        <a href="/user/login" class="w3-bar-item w3-button w3-hover-green">Login</a>
         <a href="/camper" class="w3-bar-item w3-button w3-hover-blue">Home</a>
         <a href="/camper/blog" class="w3-bar-item w3-button w3-hover-teal">Write a new Story!</a>
         <input type="text" class="w3-bar-item w3-input w3-white w3-mobile w3-right" placeholder="Search..">
@@ -46,28 +44,15 @@
         <tr class="w3-teal">
             <th>Title</th>
             <th>Author</th>
+            <th>Date:</th>
         </tr>
         </thead>
         <tr th:each="blog : ${blogs}">
             <td th:text="${blog.title}"></td>
             <td th:text="${blog.author}"></td>
+            <td th:text="${blog.createdOn}"></td>
         </tr>
     </table>
-
-
-        <!--<table class="table">-->
-            <!--<tr>-->
-                <!--<th>Title</th>-->
-                <!--<th>Author</th>-->
-                <!--&lt;!&ndash;<th>Date</th>&ndash;&gt;-->
-            <!--</tr>-->
-
-            <!--<tr th:each="blog : ${blogs}">-->
-                <!--<td th:text="${blog.title}"></td>-->
-                <!--<td th:text="${blog.author}"></td>-->
-                <!--&lt;!&ndash;<td th:text="${blog.createdon}"></td>&ndash;&gt;-->
-            <!--</tr>-->
-        <!--</table>-->
 
         <hr/>
     </body>
