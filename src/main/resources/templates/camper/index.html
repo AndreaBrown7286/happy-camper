@@ -42,12 +42,14 @@
         <thead>
         <tr class="w3-teal">
             <th>Title</th>
+            <th>Location:</th>
             <th>Author</th>
             <th>Date:</th>
         </tr>
         </thead>
         <tr th:each="blog : ${blogs}">
             <td th:text="${blog.title}"></td>
+            <td th:text="${blog.location}"
             <td th:text="${blog.author}"></td>
             <td th:text="${blog.createdOn}"></td>
         </tr>
