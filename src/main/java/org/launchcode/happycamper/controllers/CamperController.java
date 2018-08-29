@@ -7,13 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.ToDoubleBiFunction;
 
 @Controller
@@ -75,6 +74,19 @@ public class CamperController {
         }
 
         return "camper/searchlist";
+    }
+
+    @RequestMapping(value = "singleblog/{id}")
+    public String singleblogdisplay(@PathVariable int id, Model model){
+
+        model.addAttribute("title", "Event Details");
+
+        Optional<Blog> blog = blogDao.findById(id);
+        if (blog.isPresent()) {
+            model.addAttribute(blog.get());
+        }
+
+        return "camper/singleblog";
     }
 
 }
