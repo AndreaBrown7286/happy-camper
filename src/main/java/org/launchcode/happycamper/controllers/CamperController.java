@@ -10,8 +10,11 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.function.ToDoubleBiFunction;
 
 @Controller
 @RequestMapping("camper")
@@ -56,14 +59,22 @@ public class CamperController {
 
     @RequestMapping(value = "search")
     public String search(Model model) {
+
         model.addAttribute(new SearchForm());
         return "camper/search";
     }
-//
-//    @RequestMapping(value = "")
-//    public String searchresults(Model model, @ModelAttribute SearchForm searchForm){
-//
-//        return "camper/singleblog";
-//    }
+
+    @RequestMapping(value = "search", method = RequestMethod.POST)
+    public String processsearch(@RequestParam("keyword") String keyword,@ModelAttribute SearchForm searchForm, Model model){
+
+        List<Blog>blogs;
+
+        if(keyword != null){
+            blogs = blogDao.findByLocation(searchForm.getKeyword());
+            model.addAttribute("blogs", blogs);
+        }
+
+        return "camper/searchlist";
+    }
 
 }

@@ -9,21 +9,24 @@
 
 
 <div class="w3-container">
-    <div class="w3-bar w3-border w3-light-green">
+    <div class="w3-bar w3-border w3-light-grey">
         <a href="/camper" class="w3-bar-item w3-button">Home Page</a>
-        <a href="/camper/blog" class="w3-bar-item w3-button w3-hover-teal">Write a new Story!</a>
-        <a href="/search" class="w3-bar-item w3-button w3-right"><i class="fa fa-search"></i></a>
+        <a href="/camper/search" class="w3-bar-item w3-button">Search<i class="fa fa-search"></i></a>
     </div>
 </div>
 
 <body class="container w3-display-container w3-dark-gray" style="height:300px;">
 
-<div class="w3-container body-content">
+<div class="w3-display-container w3-animate-opacity">
+    <img src="https://wallpaperstock.net/autumn-forest-leaves--road-wallpapers_42751_1920x1080.jpg" alt="Trees" style="width:100%;min-height:200px;max-height:400px;">
+    <div class="w3-display-middle w3-text-white w3-jumbo">Search for a location that fellow campers have shared</div>
+</div>
 
     <form method="post" th:object="${searchForm}">
-    <div class="form-group">
-        <label th:for="*{keyword}">Keyword</label>
-        <input class="form-control" th:field="*{keyword}" />
+
+    <div class= "form-group">
+    <label th:for="keyword">Keyword</label>
+    <input class="form-control" th:field="*{keyword}" />
     </div>
 
     <input type="submit" value="Search" />

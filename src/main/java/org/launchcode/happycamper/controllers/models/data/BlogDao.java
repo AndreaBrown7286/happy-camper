@@ -11,7 +11,8 @@ import java.util.List;
 @Transactional
 public interface BlogDao extends CrudRepository<Blog, Integer> {
 
-    public List<Blog> findById(int id);
+    List<Blog> findById(int id);
+    List<Blog>findByLocation(String location);
 
 
 }
