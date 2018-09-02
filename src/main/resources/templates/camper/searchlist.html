@@ -17,18 +17,27 @@
 
 <body class="w3-dark-gray" style="height:300px;">
 
+<div class="w3-display-container w3-animate-opacity">
+    <img src="https://c.wallhere.com/photos/c9/47/nature_landscape_mist_forest_morning_sun_rays_trees_India-130749.jpg!d" alt="Trees" style="width:100%;min-height:200px;max-height:400px;">
+    <div class="w3-display-center w3-text-white w3-jumbo">Is this what you were looking for?</div>
+</div>
+
+<p th:unless="${blogs} and ${blogs.size()}">Sorry nothing found on this location :(</p>
+
 <table class="w3-table-all w3-margin w3-gray">
     <thead>
     <tr class="w3-teal">
         <th>Title</th>
         <th>Location:</th>
+        <th>Star Rating:</th>
         <th>Author</th>
-        <th>Date:</th>
+        <th>Date of post:</th>
     </tr>
     </thead>
     <tr th:each="blog : ${blogs}">
         <td><a th:href="@{${'/camper/singleblog/'+blog.id}}" th:text="${blog.title}"></a></td>
         <td th:text="${blog.location}"></td>
+        <td th:text="${blog.stars}"></td>
         <td th:text="${blog.author}"></td>
         <td th:text="${blog.createdOn}"></td>
     </tr>

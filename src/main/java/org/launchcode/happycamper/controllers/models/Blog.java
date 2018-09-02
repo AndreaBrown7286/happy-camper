@@ -23,15 +23,18 @@ public class Blog {
     @NotNull
     private String body;
 
+    private String stars;
+
     private String author;
 
     @NotNull
     private Date createdOn;
 
-    public Blog(String title, String location, String body, String author, Date createdOn) {
+    public Blog(String title, String location, String body, String stars, String author, Date createdOn) {
         this.title = title;
         this.location = location;
         this.body = body;
+        this.stars = stars;
         this.author = author;
         this.createdOn = createdOn;
     }
@@ -65,6 +68,14 @@ public class Blog {
 
     public void setBody(String  body) {
         this.body = body;
+    }
+
+    public String getStars() {
+        return stars;
+    }
+
+    public void setStars(String stars) {
+        this.stars = stars;
     }
 
     public String getAuthor() {

@@ -12,33 +12,42 @@
     <div class="w3-bar w3-border w3-light-green">
         <a href="/camper" class="w3-bar-item w3-button">Home Page</a>
         <a href="/camper/blog" class="w3-bar-item w3-button w3-hover-teal">Write a new Story!</a>
-        <a href="/search" class="w3-bar-item w3-button w3-right"><i class="fa fa-search"></i></a>
+        <a href="/camper/search" class="w3-bar-item w3-button">Try another Search<i class="fa fa-search"></i></a>
     </div>
 </div>
 
 <body class="container w3-display-container w3-dark-gray" style="height:300px;">
 
+<div class="w3-display-container w3-animate-opacity">
+    <img src="https://youmeandtrends.com/wp-content/uploads/2015/10/Nature-Tree-Beside-Lake-Wide.jpg" alt="Trees" style="width:100%;min-height:200px;max-height:400px;">
+    <div class="w3-display-center w3-text-white w3-jumbo">Check it out!</div>
+</div>
+
 <div class="w3-container body-content">
 
     <table class="blog-display w3-container w3-table-all w3-margin w3-gray" th:object="${blog}">
         <tr>
-            <th>Title</th>
+            <th>Title:</th>
             <td th:text="*{title}"></td>
         </tr>
         <tr>
-            <th>Location</th>
+            <th>Location:</th>
             <td th:text="*{location}"></td>
         </tr>
         <tr>
-            <th>Body</th>
+            <th>Body:</th>
             <td th:text="*{body}"></td>
         </tr>
         <tr>
-            <th>author</th>
+            <th>Star rating:</th>
+            <td th:text="*{stars}"></td>
+        </tr>
+        <tr>
+            <th>Author:</th>
             <td th:text="*{author}"></td>
         </tr>
         <tr>
-            <th>createdOn</th>
+            <th>Date of post:</th>
             <td th:text="*{createdOn}"></td>
         </tr>
     </table>

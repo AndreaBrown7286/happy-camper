@@ -42,14 +42,20 @@
     </div>
 
     <div class="form-group">
+        <label th:for="*{stars}">Give this campgrounds a rating:</label>
+        <input class="form-control" th:field="*{stars}" placeholder="ie: 1-5"/>
+        <span th:errors="*{stars}" class="error"></span>
+    </div>
+
+    <div class="form-group">
         <label th:for="*{author}">Author:</label>
         <input class="form-control" th:field="*{author}"/>
         <span th:errors="*{author}" class="error"></span>
     </div>
 
     <div class="form-group">
-        <label th:for="*{createdOn}">Date:</label>
-        <input class="form-control" th:field="*{createdOn}"/>
+        <label th:for="*{createdOn}">Date of post:</label>
+        <input class="form-control" th:field="*{createdOn}" placeholder="00/00/0000"/>
         <span th:errors="*{createdOn}" class="error"></span>
     </div>
 

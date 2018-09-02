@@ -66,6 +66,7 @@ public class CamperController {
     @RequestMapping(value = "search", method = RequestMethod.POST)
     public String processsearch(@RequestParam("keyword") String keyword,@ModelAttribute SearchForm searchForm, Model model){
 
+        model.addAttribute("title", "Blog Search Results");
         List<Blog>blogs;
 
         if(keyword != null){
@@ -79,7 +80,7 @@ public class CamperController {
     @RequestMapping(value = "singleblog/{id}")
     public String singleblogdisplay(@PathVariable int id, Model model){
 
-        model.addAttribute("title", "Event Details");
+        model.addAttribute("title", "Blog Post");
 
         Optional<Blog> blog = blogDao.findById(id);
         if (blog.isPresent()) {
