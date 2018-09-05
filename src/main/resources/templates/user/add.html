@@ -1,54 +1,63 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns:th="http://www.thymeleaf.org/"
-                xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 
-<head>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
+<head th:replace="fragments :: head"></head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-green.css">
 
-<h1 th:text="${title}">Default Title</h1>
+<div class="w3-container">
+    <div class="w3-bar w3-border w3-light-green">
+        <a href="/user/login" class="w3-bar-item w3-button w3-hover-blue w3-center">Already have an account? Go to Login.</a>
+    </div>
+</div>
 
-<body>
+<body class="w3-dark-gray" style="height:300px;">
 
-    <form th:action="@{/user/login}" method="get">
-        <button class="btn btn-md btn-warning btn-block" type="Submit">Go To Login Page</button>
-    </form>
+<div class="w3-center w3-text-white w3-jumbo">Register to be a HappyCamper!</div>
+
+
+<div class="w3-display-container w3-animate-opacity">
+    <img src="http://www.youandthemat.com/wp-content/uploads/nature-2-26-17.jpg" alt="tpee" style="width:100%;min-height:200px;max-height:400px;">
+    <div class="w3-display-right w3-text-white">
 
     <div class="container">
 
-        <form method="post" style="max-width:600px;" th:object="${user}">
+        <form class="w3-display-right" method="post" style="width:60%" th:object="${user}">
 
-            <div class="form-group">
+            <div class="form-group" style="width:75%">
                 <label th:for="*{username}">Username</label>
                 <input class="form-control" th:field="*{username}"/>
                 <span th:errors="*{username}" class="error"></span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" style="width:75%">
                 <label th:for="*{email}">Email:</label>
                 <input class="form-control" th:field="*{email}" type="email"/>
                 <span th:errors="*{email}" class="error"></span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" style="width:75%">
                 <label th:for="*{password}">Password:</label>
                 <input class="form-control" th:field="*{password}" type="password"/>
                 <span th:errors="*{password}" class="error"></span>
             </div>
 
-            <div class="form-group">
-                <label for="verify-field">Verify:</label>
+            <div class="form-group" style="width:75%">
+                <label for="verify-field">Verify Password:</label>
                 <input class="form-control" id="verify-field" type="password" name="verify" />
             </div>
 
-            <input type="submit" value="Sign Up" />
-        </form>
+            <input type="submit" class="w3-btn w3-teal" value="Sign Up" />
 
-        <span class="error" th:text="${message}"></span>
+        </form>
+        <span class="error w3-right w3-text-red w3-large" th:text="${message}"></span>
+    </div>
+
+    </div>
+
+
     </div>
 </body>
 </html>
