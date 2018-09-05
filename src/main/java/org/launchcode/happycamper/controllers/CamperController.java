@@ -9,11 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.Option;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.ToDoubleBiFunction;
 
 @Controller
 @RequestMapping("camper")
@@ -64,7 +62,7 @@ public class CamperController {
     }
 
     @RequestMapping(value = "search", method = RequestMethod.POST)
-    public String processsearch(@RequestParam("keyword") String keyword,@ModelAttribute SearchForm searchForm, Model model){
+    public String processsearch(@RequestParam("keyword") String keyword, @ModelAttribute SearchForm searchForm, Model model){
 
         model.addAttribute("title", "Blog Search Results");
         List<Blog>blogs;

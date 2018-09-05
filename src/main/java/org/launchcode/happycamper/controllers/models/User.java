@@ -26,10 +26,6 @@ public class User {
     @Size(min = 5, max = 15)
     private String password;
 
-    @NotNull
-    @Size(min = 5, max = 15)
-    private String verify_password;
-
     public User(int id, String username, String email, String password) {
         this.id = id;
         this.username = username;
@@ -72,11 +68,4 @@ public class User {
         this.password = password;
     }
 
-    public String getVerify_password() {
-        return verify_password;
-    }
-
-    public void setVerify_password(String verify_password) {
-        this.verify_password = verify_password;
-    }
-}
+   }

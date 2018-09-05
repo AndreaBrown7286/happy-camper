@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns:th="http://www.thymeleaf.org/"
-      xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 
 <head th:replace="fragments :: head"></head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-green.css">
 
-<nav>
-    <a th:href="/camper">Home Page</a> | <a th:href="/logout">Logout</a>
-</nav>
+<div class="w3-container">
+    <div class="w3-bar w3-border w3-light-green">
+        <a href="/user/add" class="w3-bar-item w3-button w3-hover-blue">Signup</a>
+        <a href="/user/login" class="w3-bar-item w3-button w3-hover-blue">Login</a>
+        <a href="/camper" class="w3-bar-item w3-button w3-hover-blue">Home</a>
+        <a href="/camper/blog" class="w3-bar-item w3-button w3-hover-teal">Write a new Story!</a>
+        <a href="/camper/search" class="w3-bar-item w3-button">Search<i class="fa fa-search"></i></a>
+        <a href="/user/logout" class="w3-bar-item w3-button w3-hover-blue w3-right">Logout</a>
+    </div>
+</div>
 
 <body class="container">
     <h1 th:text=" 'Hello, ' + ${user.username} +'. Welcome to HappyCamper!'"></h1>
-    <nav>
-        <a th:href="camper/add">Create new Post</a>
-    </nav>
+
 </body>
 
 
