@@ -9,7 +9,7 @@
 
 <div class="w3-container">
     <div class="w3-bar w3-border w3-light-green">
-        <a href="/user/add" class="w3-bar-item w3-button w3-hover-blue">Signup</a>
+        <a href="/user/add" class="w3-bar-item w3-button w3-hover-blue">Register</a>
         <a href="/user/login" class="w3-bar-item w3-button w3-hover-blue">Login</a>
         <a href="/camper" class="w3-bar-item w3-button w3-hover-blue">Home</a>
         <a href="/camper/blog" class="w3-bar-item w3-button w3-hover-teal">Write a new Story!</a>
@@ -18,11 +18,41 @@
     </div>
 </div>
 
-<body class="container">
+<body class="w3-dark-gray" style="height:300px;">
+
+<div class="w3-display-container w3-animate-opacity">
+    <img src="http://eskipaper.com/images/spring-forest-wallpaper-2.jpg" alt="Cliffs" style="width:100%;min-height:200px;max-height:400px;">
+    <div class="w3-display-middle w3-text-white w3-jumbo">HappyCamper</div>
+    <div class="w3-container w3-display-bottomright w3-text-white w3-large">
+        <p>Brought to you by Andrea Brown</p>
+    </div>
+</div>
+
+<div class="w3-container w3-margin">
     <h1 th:text=" 'Hello, ' + ${user.username} +'. Welcome to HappyCamper!'"></h1>
+    <p>HappyCamper is a place for campers to share there stories with their fellow camping community.
+        Where you can share what you love about your favorite campgrounds and that perfect site number,
+        share your photos, and even give a star rating. If you looking for your next adventure try searching
+        a campgrounds and see what your fellow campers thought, what ratings they gave and what is the best site
+        to book.
+        Happy Camping!</p>
+</div>
+<hr/>
+<a href="/camper"><h2 class="w3-container w3-margin w3-center">Click here to check out other campers stories.</h2></a>
+
+
+
+
+<hr/>
+
+<div class="w3-container">
+
+    <a href="https://www.reserveamerica.com/"><button class="w3-button w3-block w3-green">Ready to book a camping trip? Check out this site! Reserve America.com</button></a>
+
+</div>
+
 
 </body>
 
-
-
 </html>
+
